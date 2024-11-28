@@ -78,6 +78,10 @@ int main() {
 
     cout << ufoList[0].latitude << endl;
 
+    // Testing
+
+
+
 }
 
 
