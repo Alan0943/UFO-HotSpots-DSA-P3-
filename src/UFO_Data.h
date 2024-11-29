@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
+#include <unordered_map>
+#include <vector>
 using namespace std;
 
 class UFO {
@@ -29,3 +32,4 @@ public:
     string day_doc;
 
 };
+

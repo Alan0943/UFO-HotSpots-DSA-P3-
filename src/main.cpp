@@ -5,8 +5,24 @@
 #include <vector>
 #include <string>
 #include <filesystem>
+#include <unordered_map>
 
 using namespace std;
+
+struct PairHash {
+    size_t operator()(const pair<int, int>& p) const {
+        // hash func is adding the hashes of the two integers
+        // two integers will be floor of inputted latitude and longitude (floored to nearest multiple of 10 - and converted to int from double)
+        return hash<int>()(p.first) ^ (hash<int>()(p.second) << 1);
+    }
+};
+
+// not sure if we need this
+struct PairEqual {
+    bool operator()(const std::pair<int, int>& lhs, const std::pair<int, int>& rhs) const {
+        return lhs.first == rhs.first && lhs.second == rhs.second;
+    }
+};
 
 
 int main() {
@@ -87,6 +103,11 @@ int main() {
     cout << ufoList[6009].longitude << endl;
 
     // Testing
+
+    // hash table implementation in main:
+
+    unordered_map<pair<int,int>, vector<UFO>, PairHash, PairEqual> my_hashtable;
+
 
 
 
