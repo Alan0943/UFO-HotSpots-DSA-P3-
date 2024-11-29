@@ -7,10 +7,14 @@
 using namespace std;
 
 
-
 int main() {
 
     ifstream file("ufo_sightings.csv");
+
+    if (!file.is_open()) {
+        cerr << "Error opening file." << endl;
+        return 1;
+    }
 
     // use for testing csv reading
 //    string line;
@@ -59,9 +63,9 @@ int main() {
 
         // removes commas so lat/long can be converted to double
         getline(ss, field, ',');
-        ufo.latitude = stod(field.substr(1, field.size() - 2));
+        ufo.latitude = stod(field);
         getline(ss, field, ',');
-        ufo.longitude = stod(field.substr(1, field.size() - 2));
+        ufo.longitude = stod(field);
 
         getline(ss, ufo.year, ',');
         getline(ss, ufo.month, ',');
@@ -76,7 +80,7 @@ int main() {
         ufoList.push_back(ufo);
     }
 
-    cout << ufoList[0].latitude << endl;
+    cout << ufoList[60090].longitude << endl;
 
     // Testing
 

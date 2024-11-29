@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/UFO-HotSpots-DSA-P3--main/src
+# Install script for directory: C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/src")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/UFO_HotSpots_DSA_P3__test")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/UFO-HotSpots-DSA-P3--main/src/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/src/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "src.exe"
+			"path" : "UFO_HotSpots_DSA_P3__test.exe"
 		},
 		{
-			"path" : "src.pdb"
+			"path" : "UFO_HotSpots_DSA_P3__test.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -56,7 +56,7 @@
 			]
 		}
 	],
-	"id" : "src::@6890427a1f51a3e7e1df",
+	"id" : "UFO_HotSpots_DSA_P3__test::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -76,8 +76,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "src",
-	"nameOnDisk" : "src.exe",
+	"name" : "UFO_HotSpots_DSA_P3__test",
+	"nameOnDisk" : "UFO_HotSpots_DSA_P3__test.exe",
 	"paths" : 
 	{
 		"build" : ".",

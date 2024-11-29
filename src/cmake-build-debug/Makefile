@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.1\bin\cmake\win\x64\bin\cmake.exe" -
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\UFO-HotSpots-DSA-P3--main\src
+CMAKE_SOURCE_DIR = C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug\CMakeFiles C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug\CMakeFiles C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ascn1\OneDrive\Documents\UFO-HotSpots-DSA-P3--main\src\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named src
+# Target rules for targets named UFO_HotSpots_DSA_P3__test
 
 # Build rule for target.
-src: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src
-.PHONY : src
+UFO_HotSpots_DSA_P3__test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 UFO_HotSpots_DSA_P3__test
+.PHONY : UFO_HotSpots_DSA_P3__test
 
 # fast build rule for target.
-src/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\src.dir\build.make CMakeFiles/src.dir/build
-.PHONY : src/fast
+UFO_HotSpots_DSA_P3__test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\UFO_HotSpots_DSA_P3__test.dir\build.make CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/build
+.PHONY : UFO_HotSpots_DSA_P3__test/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\src.dir\build.make CMakeFiles/src.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\UFO_HotSpots_DSA_P3__test.dir\build.make CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -141,7 +141,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\src.dir\build.make CMakeFiles/src.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\UFO_HotSpots_DSA_P3__test.dir\build.make CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -149,7 +149,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\src.dir\build.make CMakeFiles/src.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\UFO_HotSpots_DSA_P3__test.dir\build.make CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -160,7 +160,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... src
+	@echo ... UFO_HotSpots_DSA_P3__test
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
