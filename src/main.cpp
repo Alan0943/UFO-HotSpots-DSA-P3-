@@ -1,15 +1,19 @@
+#include "UFO_Data.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "UFO_Data.h"
 #include <vector>
 #include <string>
+#include <filesystem>
+
 using namespace std;
 
 
 int main() {
 
-    ifstream file("ufo_sightings.csv");
+    filesystem::path filepath = "C:/Users/seann/Documents/Project3/src/ufo_sightings.csv";
+
+    ifstream file(filepath);
 
     if (!file.is_open()) {
         cerr << "Error opening file." << endl;
@@ -80,7 +84,7 @@ int main() {
         ufoList.push_back(ufo);
     }
 
-    cout << ufoList[60090].longitude << endl;
+    cout << ufoList[6009].longitude << endl;
 
     // Testing
 
