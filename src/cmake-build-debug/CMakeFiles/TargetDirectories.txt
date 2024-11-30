@@ -1,3 +1,0 @@
-C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/src/cmake-build-debug/CMakeFiles/UFO_HotSpots_DSA_P3__test.dir
-C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/src/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/src/cmake-build-debug/CMakeFiles/rebuild_cache.dir
