@@ -31,6 +31,73 @@ int main() {
     }
 
     // make a main menu, with a while loop that asks for input / outputs
+    // menu item 1: user inputs coords, circle of area - outputs all sightings, sorted by distance
+    // for sightings with same distance sort by time?
+    // menu item 2: user inputs coords - outputs ALL sightings, sorted by distance
+    // menu item 3: outputs all sightings sorted by duration length
+    // menu item 4: outputs all sightings sorted by time
+
+    // error check inputs
+
+    int choice;
+    double lat,lon,radius;
+    vector<UFO::Row> temp;
+    vector<UFO::Row> output;
+
+    while (true) {
+        std::cout << "Welcome to the UFO Sightings Program!\n";
+        std::cout << "1. Search sightings by coordinates and radius\n";
+        std::cout << "2. Search all sightings by coordinates\n";
+        std::cout << "3. Show all sightings sorted by duration\n";
+        std::cout << "4. Show all sightings sorted by time\n";
+        std::cout << "5. Exit\n";
+
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+
+        if (choice == 1) {
+
+            // error check
+            std::cout << "Enter latitude: ";
+            std::cin >> lat;
+            std::cout << "Enter longitude: ";
+            std::cin >> lon;
+            std::cout << "Enter radius in miles: ";
+            std::cin >> radius;
+
+            temp = test.sortHelper(lat,lon,radius,"distance");
+            output = test.mergeSort(temp);
+
+            //display output
+
+        }
+
+        else if (choice == 2) {
+
+            // error check
+            std::cout << "Enter latitude: ";
+            std::cin >> lat;
+            std::cout << "Enter longitude: ";
+            std::cin >> lon;
+
+            temp = test.sortHelper(lat,lon,0,"distance");
+            output = test.mergeSort(temp);
+
+            //display output
+
+        }
+
+        else if (choice == 5) {
+            std::cout << "Goodbye!" << std::endl;
+            break;
+        }
+
+        else {
+            cout << "Invalid Input" << endl;
+        }
+    }
+
+
 
 }
 

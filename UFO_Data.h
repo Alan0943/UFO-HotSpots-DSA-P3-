@@ -57,9 +57,11 @@ struct UFO {
     // inserts data into grid_map
     void insert(double lat, double lon, vector<string> vec);
 
-    void mergeSort(double lat, double lon, int radius);
+    vector<UFO::Row> sortHelper(double lat, double lon, int radius, string dataType);
 
-    void quickSort(double lat, double lon, int radius);
+    vector<UFO::Row> mergeSort(vector<UFO::Row> vec);
+
+    vector<UFO::Row> quickSort(vector<UFO::Row> vec);
 
 
 };

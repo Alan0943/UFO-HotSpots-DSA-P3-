@@ -108,14 +108,18 @@ void UFO::insert(double lat, double lon, vector<string> vec) {
 
 }
 
+vector<UFO::Row> UFO::sortHelper(double lat, double lon, int radius, string dataType) {
+    vector<Row> result;
+    return result;
+}
+
 // need to implement
-void UFO::mergeSort(double lat, double lon, int radius) {
+vector<UFO::Row> UFO::mergeSort(vector<UFO::Row> vec) {
 
 }
 
 // need to implement
-void UFO::quickSort(double lat, double lon, int radius) {
+vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec) {
 
 }
-
 
