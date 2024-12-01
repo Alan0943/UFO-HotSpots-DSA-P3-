@@ -9,7 +9,7 @@
 
 UFO::UFO() {
     // data set
-    filesystem::path filepath = "C:\\Users\\ascn1\\OneDrive\\Documents\\UFO-HotSpots-DSA-P3--test\\ufo_sightings.csv";
+    filesystem::path filepath = "../resources/ufo_sightings.csv";
     
     // opens file
     ifstream file(filepath);
