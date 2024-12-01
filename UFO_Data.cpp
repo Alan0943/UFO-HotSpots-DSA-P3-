@@ -5,6 +5,7 @@
 #include <string>
 #include <filesystem>
 #include <cmath>
+#include <algorithm>
 
 
 UFO::UFO() {
@@ -108,18 +109,99 @@ void UFO::insert(double lat, double lon, vector<string> vec) {
 
 }
 
-vector<UFO::Row> UFO::sortHelper(double lat, double lon, int radius, string dataType) {
+// https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/
+double UFO::distanceCalc(double lat1, double lon1, double lat2, double lon2) {
+
+    // finds distance between lats/lons
+    double dLat = (lat2 - lat1) *
+                  M_PI / 180.0;
+    double dLon = (lon2 - lon1) *
+                  M_PI / 180.0;
+
+    // convert to radians
+    lat1 = (lat1) * M_PI / 180.0;
+    lat2 = (lat2) * M_PI / 180.0;
+
+    // apply haversine formula
+    double a = pow(sin(dLat / 2), 2) +
+               pow(sin(dLon / 2), 2) *
+               cos(lat1) * cos(lat2);
+
+    // mean radius in terms of miles
+    double rad = 3959.0;
+
+    double c = 2 * asin(sqrt(a));
+    return rad * c;
+}
+
+vector<UFO::Row> UFO::sortHelper(double lat, double lon, int radius) {
+
+    // Determine the key of the current grid
+    int lat_key = int(floor(lat / 10)) * 10;
+    int lon_key = int(floor(lon / 10)) * 10;
+
     vector<Row> result;
+    double current_dist;
+
+    // List of all grid keys to check (current grid + adjacent grids)
+    vector<pair<int, int>> grids_to_check = {
+            {lat_key, lon_key},                 // current grid
+            {lat_key - 10, lon_key},            // north
+            {lat_key + 10, lon_key},            // south
+            {lat_key, lon_key - 10},            // west
+            {lat_key, lon_key + 10},            // east
+            {lat_key - 10, lon_key - 10},       // north-west
+            {lat_key - 10, lon_key + 10},       // north-east
+            {lat_key + 10, lon_key - 10},       // south-west
+            {lat_key + 10, lon_key + 10}        // south-east
+    };
+
+    // Loop through each grid to check
+    for (const auto& grid : grids_to_check) {
+
+        // Check if the grid exists in the map
+        if (grid_map.find(grid) != grid_map.end()) {
+
+            for ( auto& i : grid_map[grid]) {
+
+                // Calculate the distance between the current location and the sighting
+                current_dist = distanceCalc(lat, lon, i.latitude, i.longitude);
+
+                // If the distance is within the radius, add the sighting to the result
+                if (current_dist <= radius) {
+                    cout << current_dist << endl;
+                    i.distance = current_dist;
+                    result.push_back(i);
+                }
+            }
+        }
+    }
+
     return result;
 }
 
 // need to implement
-vector<UFO::Row> UFO::mergeSort(vector<UFO::Row> vec) {
+vector<UFO::Row> UFO::mergeSort(vector<UFO::Row> vec, string datatype) {
+
+    return vec;
 
 }
 
 // need to implement
-vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec) {
+vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype) {
 
 }
+
+// temporary remove after implementing real sort
+map<double, UFO::Row> UFO::tempSort(vector<UFO::Row> vec) {
+    map<double, UFO::Row> temp_map;
+
+    for (auto& sighting : vec) {
+        temp_map[sighting.distance] = sighting;
+    }
+
+    return temp_map;
+}
+
+
 

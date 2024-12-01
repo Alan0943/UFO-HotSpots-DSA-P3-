@@ -3,6 +3,7 @@
 #include <string>
 #include <utility>
 #include <unordered_map>
+#include <map>
 #include <vector>
 using namespace std;
 
@@ -42,6 +43,8 @@ struct UFO {
         string month_doc;
         string day_doc;
 
+        double distance;
+
     };
 
     // map data structure
@@ -57,11 +60,16 @@ struct UFO {
     // inserts data into grid_map
     void insert(double lat, double lon, vector<string> vec);
 
-    vector<UFO::Row> sortHelper(double lat, double lon, int radius, string dataType);
+    double distanceCalc(double lat1, double lon1, double lat2, double lon2);
 
-    vector<UFO::Row> mergeSort(vector<UFO::Row> vec);
+    vector<UFO::Row> sortHelper(double lat, double lon, int radius);
 
-    vector<UFO::Row> quickSort(vector<UFO::Row> vec);
+    vector<UFO::Row> mergeSort(vector<UFO::Row> vec, string datatype);
+
+    vector<UFO::Row> quickSort(vector<UFO::Row> vec, string datatype);
+
+    // temporary remove after implementing real sort
+    map<double, UFO::Row> tempSort(vector<UFO::Row> vec);
 
 
 };
