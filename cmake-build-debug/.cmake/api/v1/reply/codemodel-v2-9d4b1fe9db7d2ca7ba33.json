@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/cmake-build-debug",
-		"source" : "C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main"
+		"build" : "C:/Users/ascn1/OneDrive/Documents/DSA-p3-main/cmake-build-debug",
+		"source" : "C:/Users/ascn1/OneDrive/Documents/DSA-p3-main"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 7
 	}
 }

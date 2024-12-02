@@ -169,7 +169,6 @@ vector<UFO::Row> UFO::sortHelper(double lat, double lon, int radius) {
 
                 // If the distance is within the radius, add the sighting to the result
                 if (current_dist <= radius) {
-                    cout << current_dist << endl;
                     i.distance = current_dist;
                     result.push_back(i);
                 }

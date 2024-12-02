@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/UFO_Data.cpp" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/UFO_Data.cpp.obj" "gcc" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/UFO_Data.cpp.obj.d"
-  "C:/Users/ascn1/OneDrive/Documents/UFO-HotSpots-DSA-P3--main/main.cpp" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/main.cpp.obj" "gcc" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/main.cpp.obj.d"
+  "C:/Users/ascn1/OneDrive/Documents/DSA-p3-main/UFO_Data.cpp" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/UFO_Data.cpp.obj" "gcc" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/UFO_Data.cpp.obj.d"
+  "C:/Users/ascn1/OneDrive/Documents/DSA-p3-main/main.cpp" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/main.cpp.obj" "gcc" "CMakeFiles/UFO_HotSpots_DSA_P3__test.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

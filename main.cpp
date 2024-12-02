@@ -58,18 +58,23 @@ int main() {
 
         cout << "6. Exit\n";
 
-        cout << "Enter your choice: ";
+        cout << "Enter your choice:";
         cin >> choice;
         cout << endl;
 
         if (choice == 1) {
 
-            cout << "Enter latitude: ";
+            cout << "Enter latitude:    ";
             cin >> lat;
-            cout << "Enter longitude: ";
+            cout << endl;
+
+            cout << "Enter longitude:   ";
             cin >> lon;
+            cout << endl;
+
             cout << "Enter radius in miles: ";
             cin >> radius;
+            cout << endl;
 
             // error check
             if (lat > 50 || lat < 20 || lon < -130 || lon > -60 || radius > 501 || radius < 1) {
@@ -112,7 +117,7 @@ int main() {
         }
 
         else {
-            cout << "Invalid Input" << endl;
+            cout << "Invalid Input - Insert a Number Between 1 and 6\n" << endl;
         }
     }
 }
