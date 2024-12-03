@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.27.0)
 project(UFO_HotSpots_DSA_P3__test)
 
 set(CMAKE_CXX_STANDARD 17)

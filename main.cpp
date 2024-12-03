@@ -3,9 +3,9 @@
 #include <vector>
 #include <string>
 #include <cmath>
-
 using namespace std;
 
+//test
 int main() {
 
     UFO test;
@@ -112,7 +112,7 @@ int main() {
         }
 
         else if (choice == 6) {
-            cout << "Goodbye!" << endl;
+            cout << "end!" << endl;
             break;
         }
 
