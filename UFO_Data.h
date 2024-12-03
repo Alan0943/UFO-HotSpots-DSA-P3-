@@ -69,7 +69,9 @@ struct UFO {
     vector<UFO::Row> quickSort(vector<UFO::Row> vec, string datatype);
 
     // temporary remove after implementing real sort
-    map<double, UFO::Row> tempSort(vector<UFO::Row> vec);
+    vector<UFO::Row> tempSort(vector<UFO::Row> vec);
+
+    map<double, UFO::Row> tempSort2(vector<UFO::Row> vec);
 
 
 };

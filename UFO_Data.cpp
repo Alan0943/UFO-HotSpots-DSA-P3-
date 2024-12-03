@@ -77,8 +77,8 @@ void UFO::insert(double lat, double lon, vector<string> vec) {
     int new_lon = int(floor(lon / 10)) * 10;
 
     // error checks to see if coords are out of bounds
-    if (new_lat > 50 || new_lat < 30 || new_lon < -120 || new_lon > -60) {
-        cout << "Invalid Coordinates";
+    if (new_lat > 50 || new_lat < 20 || new_lon < -130 || new_lon > -60) {
+        cout << "Invalid Input: Lat 20-50, Lon -130 to -60." << endl;
         return;
     }
 
@@ -106,6 +106,8 @@ void UFO::insert(double lat, double lon, vector<string> vec) {
     data.day_doc = vec[15];
 
     grid_map[pair(new_lat,new_lon)].push_back(data);
+
+    cout << "Successful Input" << endl;
 
 }
 
@@ -192,7 +194,16 @@ vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype) {
 }
 
 // temporary remove after implementing real sort
-map<double, UFO::Row> UFO::tempSort(vector<UFO::Row> vec) {
+vector<UFO::Row> UFO::tempSort(vector<UFO::Row> vec) {
+
+    sort(vec.begin(), vec.end(), [](const Row& a, const Row& b) {
+        return a.distance < b.distance;
+    });
+
+    return vec;
+}
+
+map<double, UFO::Row> UFO::tempSort2(vector<UFO::Row> vec) {
     map<double, UFO::Row> temp_map;
 
     for (auto& sighting : vec) {
@@ -201,6 +212,5 @@ map<double, UFO::Row> UFO::tempSort(vector<UFO::Row> vec) {
 
     return temp_map;
 }
-
 
 
