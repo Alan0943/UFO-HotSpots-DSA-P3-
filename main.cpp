@@ -141,7 +141,7 @@ int main() {
             vector<UFO::Row> city_vec = ufo.sortHelper_2(rows_vec);
 
             // temporary sort
-            vector<UFO::Row> menu_2_output = ufo.tempSort(city_vec, "city_count");
+            vector<UFO::Row> menu_2_output = ufo.tempSort(city_vec, "city_count_descend");
             for (auto & i : menu_2_output) {
                 cout << i.city << " " << i.city_count << " " << i.distance << endl;
             }
