@@ -27,7 +27,7 @@ struct UFO {
         string country;
 
         string shape;
-        string duration;
+        double duration;
         string description;
 
         double latitude;
@@ -44,6 +44,7 @@ struct UFO {
         string day_doc;
 
         double distance;
+        int city_count;
 
     };
 
@@ -64,15 +65,16 @@ struct UFO {
 
     vector<UFO::Row> sortHelper(double lat, double lon, int radius);
 
+    vector<UFO::Row> sortHelper_2(vector<UFO::Row> vec);
+
+    vector<UFO::Row> grid_map_to_vec();
+
     vector<UFO::Row> mergeSort(vector<UFO::Row> vec, string datatype);
 
     vector<UFO::Row> quickSort(vector<UFO::Row> vec, string datatype);
 
     // temporary remove after implementing real sort
-    vector<UFO::Row> tempSort(vector<UFO::Row> vec);
-
-    map<double, UFO::Row> tempSort2(vector<UFO::Row> vec);
-
+    vector<UFO::Row> tempSort(vector<UFO::Row> vec, string datatype);
 
 };
 

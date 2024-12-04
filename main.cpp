@@ -46,9 +46,6 @@ int main() {
     string lat_str, lon_str, radius_str;
     double lat, lon, radius;
 
-    vector<UFO::Row> rows_vec;
-    vector<UFO::Row> output;
-
     while (true) {
 
         cout << "Welcome to the UFO Sightings Program!\n";
@@ -66,6 +63,49 @@ int main() {
 
         if (choice == "1") {
 
+            // input
+            cout << "Enter latitude:    ";
+            cin >> lat_str;
+            cout << endl;
+
+            cout << "Enter longitude:   ";
+            cin >> lon_str;
+            cout << endl;
+
+            cout << "Enter radius in miles: ";
+            cin >> radius_str;
+            cout << endl;
+
+            // error checks for if it's a double or not
+            try {
+                lat = stod(lat_str);
+                lon = stod(lon_str);
+                radius = stod(radius_str);
+            }
+            catch (const std::invalid_argument& e) {
+                cout << "Invalid input: Please enter valid numeric values for latitude, longitude, and radius." << endl;
+            }
+
+            // error checks distance
+            if (lat > 50 || lat < 20 || lon < -130 || lon > -60 || radius > 501 || radius < 1) {
+                cout << "Invalid Input: Radius <= 500, Lat 20-50, Lon -130 to -60." << endl;
+                continue;
+            }
+
+            // gets all applicable sightings
+            vector<UFO::Row> rows_vec = ufo.sortHelper(lat,lon,radius);
+
+            // temporary need to implement real sort
+            vector<UFO::Row> menu_1_output = ufo.tempSort(rows_vec, "distance");
+            for (auto & i : menu_1_output) {
+                cout << i.city << " " << i.state << " " << i.distance << endl;
+            }
+
+        }
+
+        else if (choice == "2") {
+
+            // input
             cout << "Enter latitude:    ";
             cin >> lat_str;
             cout << endl;
@@ -94,51 +134,51 @@ int main() {
                 continue;
             }
 
-            rows_vec = ufo.sortHelper(lat,lon,radius);
+            // gets all applicable sightings
+            vector<UFO::Row> rows_vec = ufo.sortHelper(lat,lon,radius);
 
-            // temporary need to implement real sort
-            vector<UFO::Row> menu_1_output = ufo.tempSort(rows_vec);
-            for (auto & i : menu_1_output) {
-                cout << i.city << " " << i.state << " " << i.distance << endl;
+            // condenses rows_vec so thats its unique cities and each UFO::Row has city_count updated
+            vector<UFO::Row> city_vec = ufo.sortHelper_2(rows_vec);
+
+            // temporary sort
+            vector<UFO::Row> menu_2_output = ufo.tempSort(city_vec, "city_count");
+            for (auto & i : menu_2_output) {
+                cout << i.city << " " << i.city_count << " " << i.distance << endl;
             }
 
         }
 
-        else if (choice == "2") {
+        else if (choice == "3") {
 
-            cout << "Enter latitude: ";
-            cin >> lat;
-            cout << "Enter longitude: ";
-            cin >> lon;
+            // gets every single sighting in this vector
+            vector<UFO::Row> UFO_all = ufo.grid_map_to_vec();
 
-            // error checks for if its a double or not
-            try {
-                lat = stod(lat_str);
-                lon = stod(lon_str);
+            // condenses UFO_all so that it is only unique cities and each UFO::Row has city_count updated
+            vector<UFO::Row> city_vec = ufo.sortHelper_2(UFO_all);
+
+            // temporary sort
+            vector<UFO::Row> menu_3_output = ufo.tempSort(city_vec, "city_count_descend");
+            for (int i = 0; i < 50; i++) {
+                cout << menu_3_output[i].city << " " << menu_3_output[i].state << " " << menu_3_output[i].city_count << endl;
             }
-            catch (const std::invalid_argument& e) {
-                cout << "Invalid input: Please enter valid numeric values for latitude, longitude, and radius." << endl;
-            }
+        }
 
-            // error check
-            if (lat > 50 || lat < 20 || lon < -130 || lon > -60) {
-                cout << "Invalid Input: Lat 20-50, Lon -130 to -60." << endl;
-                continue;
-            }
+        else if (choice == "4") {
 
-            rows_vec = ufo.sortHelper(lat,lon,10000);
+            // gets every single sighting in this vector
+            vector<UFO::Row> UFO_all = ufo.grid_map_to_vec();
 
-            // temporary need to implement real sort
-            map<double, UFO::Row> output = ufo.tempSort2(rows_vec);
-            for (const auto& entry : output) {
-                const UFO::Row& sighting = entry.second;
-                cout << "City: " << sighting.city << ", State: " << sighting.state << ", Distance: "
-                     << sighting.distance << endl;
+            // temp sort
+            vector<UFO::Row> menu_4_output = ufo.tempSort(UFO_all, "duration");
+            for (int i = 0; i < 50; i++) {
+                cout << menu_4_output[i].city << " " << menu_4_output[i].state << " " << menu_4_output[i].duration << endl;
             }
 
         }
 
         else if (choice == "5") {
+
+            // vector that stores all row attributes
             vector<string> insert_vec;
 
             cout << "Enter City (string): ";
@@ -221,6 +261,7 @@ int main() {
             cin >> day_doc;
             insert_vec.push_back(day_doc);
 
+            // error checks
             try {
                 ufo.insert(stod(insert_vec[6]), stod(insert_vec[7]), insert_vec);
             } catch (const std::invalid_argument& e) {

@@ -41,7 +41,10 @@ UFO::UFO() {
         getline(ss, data.country, ',');
 
         getline(ss, data.shape, ',');
-        getline(ss, data.duration, ',');
+
+        getline(ss, field, ',');
+        data.duration = stod(field);
+
         getline(ss, data.description, ',');
 
         // removes commas so lat/long can be converted to double
@@ -89,7 +92,7 @@ void UFO::insert(double lat, double lon, vector<string> vec) {
     data.country = vec[2];
 
     data.shape = vec[3];
-    data.duration = vec[4];
+    data.duration = stod(vec[4]);
     data.description = vec[5];
 
     data.latitude = lat;
@@ -112,6 +115,7 @@ void UFO::insert(double lat, double lon, vector<string> vec) {
 }
 
 // https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/
+// uses haversine formula to calculate the distance between two sets of lats,lons
 double UFO::distanceCalc(double lat1, double lon1, double lat2, double lon2) {
 
     // finds distance between lats/lons
@@ -136,6 +140,8 @@ double UFO::distanceCalc(double lat1, double lon1, double lat2, double lon2) {
     return rad * c;
 }
 
+// used for menu option 1 and 2
+// gets all data within radius and returns it as a vector
 vector<UFO::Row> UFO::sortHelper(double lat, double lon, int radius) {
 
     // Determine the key of the current grid
@@ -159,7 +165,7 @@ vector<UFO::Row> UFO::sortHelper(double lat, double lon, int radius) {
     };
 
     // Loop through each grid to check
-    for (const auto& grid : grids_to_check) {
+    for (auto& grid : grids_to_check) {
 
         // Check if the grid exists in the map
         if (grid_map.find(grid) != grid_map.end()) {
@@ -181,6 +187,53 @@ vector<UFO::Row> UFO::sortHelper(double lat, double lon, int radius) {
     return result;
 }
 
+// used for menu option 2
+// reduces to unique cities only and updates city_count for each city and returns as a vector
+vector<UFO::Row> UFO::sortHelper_2(vector<UFO::Row> vec) {
+
+    // creates an unordered_map with a city as key and city count and distance as data
+    unordered_map<string, pair<int, double>> city_map;
+    vector<UFO::Row> return_vec;
+
+    // goes through vec and adds new city
+    // if a duplicate city appears, it adds to the first data point, and stores distance
+    // since its a map it doesn't keep duplicates
+    for (auto& i : vec) {
+        city_map[i.city].first++;
+        city_map[i.city].second = i.distance;
+    }
+
+    // goes through city_map
+    for (auto& [city, data] : city_map) {
+
+        // creates a new UFO object and gets the city, city_count, and distance from city_map
+        UFO::Row new_ufo;
+
+        new_ufo.city = city;
+        new_ufo.city_count = data.first;
+        new_ufo.distance = data.second;
+        return_vec.push_back(new_ufo);
+    }
+
+    return return_vec;
+
+}
+
+// returns a vector with every single sighting
+vector<UFO::Row> UFO::grid_map_to_vec() {
+    vector<UFO::Row> return_vec;
+
+    // Iterates over each grid in the map, and then each Row object gets appended to return_vec
+    for (auto& i : grid_map) {
+        for (auto& j: i.second) {
+            return_vec.push_back(j);
+        }
+    }
+
+    return return_vec;
+
+}
+
 // need to implement
 vector<UFO::Row> UFO::mergeSort(vector<UFO::Row> vec, string datatype) {
 
@@ -190,27 +243,38 @@ vector<UFO::Row> UFO::mergeSort(vector<UFO::Row> vec, string datatype) {
 
 // need to implement
 vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype) {
+    return vec;
 
 }
 
 // temporary remove after implementing real sort
-vector<UFO::Row> UFO::tempSort(vector<UFO::Row> vec) {
+vector<UFO::Row> UFO::tempSort(vector<UFO::Row> vec, string datatype) {
 
-    sort(vec.begin(), vec.end(), [](const Row& a, const Row& b) {
-        return a.distance < b.distance;
-    });
+    if (datatype == "distance") {
+        sort(vec.begin(), vec.end(), [](const Row& a, const Row& b) {
+            return a.distance < b.distance;
+        });
+    }
+    else if (datatype == "city_count") {
+        sort(vec.begin(), vec.end(), [](const Row& a, const Row& b) {
+            return a.city_count < b.city_count;
+        });
+    }
+
+    else if (datatype == "city_count_descend") {
+        sort(vec.begin(), vec.end(), [](const Row& a, const Row& b) {
+            return a.city_count > b.city_count;
+        });
+    }
+    else if (datatype == "duration") {
+        sort(vec.begin(), vec.end(), [](const Row& a, const Row& b) {
+            return a.duration > b.duration;
+        });
+    }
 
     return vec;
 }
 
-map<double, UFO::Row> UFO::tempSort2(vector<UFO::Row> vec) {
-    map<double, UFO::Row> temp_map;
 
-    for (auto& sighting : vec) {
-        temp_map[sighting.distance] = sighting;
-    }
-
-    return temp_map;
-}
 
 
