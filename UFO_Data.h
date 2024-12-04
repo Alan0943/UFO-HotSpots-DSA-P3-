@@ -71,7 +71,9 @@ struct UFO {
 
     vector<UFO::Row> mergeSort(vector<UFO::Row> vec, string datatype);
 
-    vector<UFO::Row> quickSort(vector<UFO::Row> vec, string datatype);
+    vector<UFO::Row> quickSort(vector<UFO::Row> vec, string datatype, int low, int high);
+
+    int partition(vector<int> &vec, int up, int down);
 
     // temporary remove after implementing real sort
     vector<UFO::Row> tempSort(vector<UFO::Row> vec, string datatype);

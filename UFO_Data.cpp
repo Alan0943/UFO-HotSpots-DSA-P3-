@@ -241,11 +241,49 @@ vector<UFO::Row> UFO::mergeSort(vector<UFO::Row> vec, string datatype) {
 
 }
 
-// need to implement
-vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype) {
-    return vec;
+
+// need to implement - taken from Sorting notes
+vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype, int low, int high) {
+    if (low < high) {
+        int piv = partition(vec, low, high); // look at vec type!
+        quickSort(vec, low, piv - 1);
+        quickSort(vec, piv + 1, high);
+    }
 
 }
+
+// partition func for quick sort
+int UFO::partition(vector<int> &vec, int low, int high) { // vec of UFO::Row?
+
+    int piv = vec[low];
+    int up = low;
+    int down = high;
+
+    while (up < down) {
+
+        // iterates up until it reaches value greater than piv
+        for (int j = up; j < high; j++) {
+            if (vec[up] > piv) {
+                break;
+            }
+            up++;
+        }
+        // iterates down until it reaches a val less than piv (starts at end of vec and works backwards)
+        for (int j = high; j > low; j--) {
+            if (vec[down] < piv) {
+                break;
+            }
+            down--;
+        }
+        // swap up and down if nec
+        if (up < down) {
+            swap(vec[up], vec[down]);
+        }
+    }
+    swap(vec[low], vec[down]);
+    return down;
+}
+
 
 // temporary remove after implementing real sort
 vector<UFO::Row> UFO::tempSort(vector<UFO::Row> vec, string datatype) {
