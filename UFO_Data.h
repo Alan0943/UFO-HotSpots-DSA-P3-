@@ -52,13 +52,10 @@ struct UFO {
     // keys are grids with an area of latitude 10 by longitude 10
     // grids cover continental U.S from 50N,-120W to 20N,-60W
     // theoretical maximum of 21 grids
-
     unordered_map<pair<int,int>, vector<Row>, PairHash> grid_map;
 
-    // constructor that automatically inputs data
     UFO();
 
-    // inserts data into grid_map
     void insert(double lat, double lon, vector<string> vec);
 
     double distanceCalc(double lat1, double lon1, double lat2, double lon2);
@@ -69,7 +66,9 @@ struct UFO {
 
     vector<UFO::Row> grid_map_to_vec();
 
-    vector<UFO::Row> mergeSort(vector<UFO::Row> vec, string datatype);
+    void merge(vector<UFO::Row>& vec, int left, int mid, int right, const string& data_type);
+
+    void mergeSort(vector<UFO::Row>& vec,int left, int right, const string& data_type);
 
     vector<UFO::Row> quickSort(vector<UFO::Row> vec, string datatype, int low, int high);
 

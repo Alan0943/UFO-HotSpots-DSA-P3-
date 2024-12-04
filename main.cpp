@@ -10,42 +10,11 @@ int main() {
 
     UFO ufo;
 
-    // test insert
-//    vector<std::string> vec = {
-//            "11111City", "StateName", "CountryName", "Triangle", "5 minutes", "Bright light",
-//            "33.6008333", "-85.831667", "2024", "10", "01", "14", "30",
-//            "2024", "10", "01"
-//    };
-//    ufo.insert(33.6008333,-85.831667, vec);
-
-//     testing keys
-//    for (const auto& entry : test.grid_map) {
-//        const pair<int, int>& key = entry.first;
-//        cout << "Key: (" << key.first << ", " << key.second << ")" << endl;
-//    }
-
-//     testing indvidual key
-//    for (const auto& sighting : test.grid_map[pair(30,-90)]) {
-//        cout << "City: " << sighting.city << ", State: " << sighting.state << ", Country: "
-//             << sighting.country << endl;
-//    }
-
-    // tests distanceCalc
-    //cout << test.distanceCalc(33.6008333,-86.9561111,34.2022222,-87.1813889) << endl;
-
-
-    // make a main menu, with a while loop that asks for input / outputs
-    // menu item 1: user inputs coords, circle of area - outputs all sightings, sorted by distance
-    // for sightings with same distance sort by time?
-    // menu item 2: user inputs coords - outputs ALL sightings, sorted by distance
-    // menu item 3: outputs all sightings sorted by duration length
-    // menu item 4: outputs all sightings sorted by time
-
-
     string choice;
     string lat_str, lon_str, radius_str, sort_choice;
     double lat, lon, radius;
 
+    // menu
     while (true) {
 
         cout << "Welcome to the UFO Sightings Program!\n";
@@ -100,15 +69,13 @@ int main() {
 
             // merge sort or quick sort option
             if (sort_choice == "M") {
-                vector<UFO::Row> menu_1_output = ufo.mergeSort(rows_vec, "distance");
+                ufo.mergeSort(rows_vec, 0 , rows_vec.size()-1, "distance");
             }
             else if (sort_choice == "Q") {
-                vector<UFO::Row> menu_1_output = ufo.quickSort(rows_vec, "distance");
+//                vector<UFO::Row> menu_1_output = ufo.quickSort(rows_vec, "distance");
             }
 
-            // temporary need to implement real sort
-            vector<UFO::Row> menu_1_output = ufo.tempSort(rows_vec, "distance");
-            for (auto & i : menu_1_output) {
+            for (auto & i : rows_vec) {
                 cout << i.city << " " << i.state << " " << i.distance << endl;
             }
 
@@ -156,18 +123,15 @@ int main() {
 
             // merge sort or quick sort option
             if (sort_choice == "M") {
-                vector<UFO::Row> menu_1_output = ufo.mergeSort(rows_vec, "city_count_descend");
+                ufo.mergeSort(city_vec, 0, city_vec.size()-1, "city_count");
             }
             else if (sort_choice == "Q") {
-                vector<UFO::Row> menu_1_output = ufo.quickSort(rows_vec, "city_count_descend");
+//                vector<UFO::Row> menu_1_output = ufo.quickSort(rows_vec, "city_count_descend");
             }
 
-            // temporary sort
-            vector<UFO::Row> menu_2_output = ufo.tempSort(city_vec, "city_count_descend");
-            for (auto & i : menu_2_output) {
+            for (auto & i : city_vec) {
                 cout << i.city << " " << i.city_count << " " << i.distance << endl;
             }
-
         }
 
         else if (choice == "3") {
@@ -183,16 +147,14 @@ int main() {
 
             // merge sort or quick sort option
             if (sort_choice == "M") {
-                vector<UFO::Row> menu_1_output = ufo.mergeSort(city_vec, "city_count_descend");
+                ufo.mergeSort(city_vec, 0, city_vec.size()-1, "city_count");
             }
             else if (sort_choice == "Q") {
-                vector<UFO::Row> menu_1_output = ufo.quickSort(city_vec, "city_count_descend");
+//                vector<UFO::Row> menu_1_output = ufo.quickSort(city_vec, "city_count_descend");
             }
 
-            // temporary sort
-            vector<UFO::Row> menu_3_output = ufo.tempSort(city_vec, "city_count_descend");
             for (int i = 0; i < 50; i++) {
-                cout << menu_3_output[i].city << " " << menu_3_output[i].state << " " << menu_3_output[i].city_count << endl;
+                cout << city_vec[i].city << " " << city_vec[i].state << " " << city_vec[i].city_count << endl;
             }
         }
 
@@ -206,18 +168,15 @@ int main() {
 
             // merge sort or quick sort option
             if (sort_choice == "M") {
-                vector<UFO::Row> menu_1_output = ufo.mergeSort(UFO_all, "duration");
+                ufo.mergeSort(UFO_all, 0 , UFO_all.size()-1, "duration");
             }
             else if (sort_choice == "Q") {
-                vector<UFO::Row> menu_1_output = ufo.quickSort(UFO_all, "duration");
+//                vector<UFO::Row> menu_1_output = ufo.quickSort(UFO_all, "duration");
             }
 
-            // temp sort
-            vector<UFO::Row> menu_4_output = ufo.tempSort(UFO_all, "duration");
             for (int i = 0; i < 50; i++) {
-                cout << menu_4_output[i].city << " " << menu_4_output[i].state << " " << menu_4_output[i].duration << endl;
+                cout << UFO_all[i].city << " " << UFO_all[i].state << " " << UFO_all[i].duration << endl;
             }
-
         }
 
         else if (choice == "5") {
@@ -321,6 +280,7 @@ int main() {
             break;
         }
 
+        // error checks choice
         else {
             cout << "Invalid Input - Insert a Number Between 1 and 6\n" << endl;
         }

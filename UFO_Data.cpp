@@ -7,7 +7,7 @@
 #include <cmath>
 #include <algorithm>
 
-
+// automatically (it's a constructor) inserts data from csv into grid_map
 UFO::UFO() {
     // data set
     filesystem::path filepath = "../resources/ufo_sightings.csv";
@@ -234,23 +234,116 @@ vector<UFO::Row> UFO::grid_map_to_vec() {
 
 }
 
-// need to implement
-vector<UFO::Row> UFO::mergeSort(vector<UFO::Row> vec, string datatype) {
+// https://www.geeksforgeeks.org/merge-sort/ and lecture slides
+// merges vec[left to mid] and vec[mid+1 to right] and sorts them at the same time
+void UFO::merge(vector<UFO::Row>& vec, int left, int mid, int right, const string& data_type) {
 
-    return vec;
+    // n1 is the space for right array
+    // n2 is the space for left array
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    vector<UFO::Row> l_vec(n1), r_vec(n2);
+
+    // copies left/right half of vec into l_vec and r_vec, using n1 and n2
+    for (int i = 0; i < n1; i++) {
+        l_vec[i] = vec[left + i];
+    }
+    for (int j = 0; j < n2; j++) {
+        r_vec[j] = vec[mid + 1 + j];
+    }
+
+    int i, j, k;
+    i = 0;
+    j = 0;
+    k = left;
+
+    // actual sorting/merge part; different attribute of Row class is sorted depending on data_type (sorting logic is same for all though)
+    // sees if l_vec[i].attribute than r_vec's, add it to vec and increment l_vec's index (i), if it isn't, add r_vec to vec and increment r_vec's index (j)
+    // basically keep on incrementing left or right's index if its smaller, then add respective smaller data to vec and repeat until i or j reaches end of vec
+    while (i < n1 && j < n2) {
+
+        // sorts on distance attribute
+        if (data_type == "distance") {
+            if (l_vec[i].distance <= r_vec[j].distance) {
+                vec[k] = l_vec[i];
+                i++;
+            }
+            else {
+                vec[k] = r_vec[j];
+                j++;
+            }
+            k++;
+        }
+
+        // sorts on city_count attribute; descend
+        else if (data_type == "city_count") {
+            if (l_vec[i].city_count >= r_vec[j].city_count) {
+                vec[k] = l_vec[i];
+                i++;
+            }
+            else {
+                vec[k] = r_vec[j];
+                j++;
+            }
+            k++;
+
+        }
+
+        // sorts on duration attribute; descend
+        else if (data_type == "duration") {
+            if (l_vec[i].duration >= r_vec[j].duration) {
+                vec[k] = l_vec[i];
+                i++;
+            }
+            else {
+                vec[k] = r_vec[j];
+                j++;
+            }
+            k++;
+
+        }
+    }
+
+    // if one vector finished before the other, copy remaining elements
+    while (i < n1) {
+        vec[k] = l_vec[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        vec[k] = r_vec[j];
+        j++;
+        k++;
+    }
+
+}
+
+// https://www.geeksforgeeks.org/merge-sort/ and lecture slides
+// recursively calls merge
+void UFO::mergeSort(vector<UFO::Row>& vec,int left, int right, const string& data_type) {
+
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(vec, left, mid, data_type);
+        mergeSort(vec, mid + 1, right, data_type);
+
+        // merge sorted subarrays
+        merge(vec, left, mid, right, data_type);
+    }
 
 }
 
 
 // need to implement - taken from Sorting notes
-vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype, int low, int high) {
-    if (low < high) {
-        int piv = partition(vec, low, high); // look at vec type!
-        quickSort(vec, low, piv - 1);
-        quickSort(vec, piv + 1, high);
-    }
-
-}
+//vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype, int low, int high) {
+//    if (low < high) {
+//        int piv = partition(vec, low, high); // look at vec type!
+//        quickSort(vec, low, piv - 1);
+//        quickSort(vec, piv + 1, high);
+//    }
+//
+//}
 
 // partition func for quick sort
 int UFO::partition(vector<int> &vec, int low, int high) { // vec of UFO::Row?
@@ -312,6 +405,7 @@ vector<UFO::Row> UFO::tempSort(vector<UFO::Row> vec, string datatype) {
 
     return vec;
 }
+
 
 
 
