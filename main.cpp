@@ -224,42 +224,42 @@ int main() {
             cin >> longitude;
             insert_vec.push_back(longitude);
 
-            cout << "Enter Year of Sight (string): ";
+            cout << "Enter YOS (string): ";
             string year;
             cin >> year;
             insert_vec.push_back(year);
 
-            cout << "Enter Month of Sight (string): ";
+            cout << "Enter MOS (string): ";
             string month;
             cin >> month;
             insert_vec.push_back(month);
 
-            cout << "Enter Day of Sight (string): ";
+            cout << "Enter DOS (string): ";
             string day;
             cin >> day;
             insert_vec.push_back(day);
 
-            cout << "Enter Hour of Sight (string): ";
+            cout << "Enter HOS (string): ";
             string hour;
             cin >> hour;
             insert_vec.push_back(hour);
 
-            cout << "Enter Minute of Sight (string): ";
+            cout << "Enter MOS (string): ";
             string minute;
             cin >> minute;
             insert_vec.push_back(minute);
 
-            cout << "Enter Year of Documentation (string): ";
+            cout << "Enter YOD (string): ";
             string year_doc;
             cin >> year_doc;
             insert_vec.push_back(year_doc);
 
-            cout << "Enter Month of Documentation (string): ";
+            cout << "Enter MOD (string): ";
             string month_doc;
             cin >> month_doc;
             insert_vec.push_back(month_doc);
 
-            cout << "Enter Day of Documentation (string): ";
+            cout << "Enter DOD (string): ";
             string day_doc;
             cin >> day_doc;
             insert_vec.push_back(day_doc);
