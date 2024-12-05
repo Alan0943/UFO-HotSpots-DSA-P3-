@@ -70,9 +70,9 @@ struct UFO {
 
     void mergeSort(vector<UFO::Row>& vec,int left, int right, const string& data_type);
 
-    vector<UFO::Row> quickSort(vector<UFO::Row> &vec, string datatype, int low, int high);
+    vector<UFO::Row> quickSort(vector<UFO::Row> &vec, int low, int high, string datatype);
 
-    int partition(vector<UFO::Row> &vec, string datatype, int up, int down);
+    int partition(vector<UFO::Row> &vec, int up, int down, string datatype);
 
     // temporary remove after implementing real sort
     vector<UFO::Row> tempSort(vector<UFO::Row> vec, string datatype);

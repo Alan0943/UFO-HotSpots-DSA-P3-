@@ -32,15 +32,15 @@ int main() {
 
         if (choice == "1") {
 
-            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only)";
+            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only): ";
             cin >> sort_choice;
 
             // input
-            cout << "Enter latitude:    ";
+            cout << "Enter latitude: ";
             cin >> lat_str;
             cout << endl;
 
-            cout << "Enter longitude:   ";
+            cout << "Enter longitude: ";
             cin >> lon_str;
             cout << endl;
 
@@ -72,7 +72,7 @@ int main() {
                 ufo.mergeSort(rows_vec, 0 , rows_vec.size()-1, "distance");
             }
             else if (sort_choice == "Q") {
-//                vector<UFO::Row> menu_1_output = ufo.quickSort(rows_vec, "distance");
+                ufo.quickSort(rows_vec, 0, rows_vec.size() - 1, "distance");
             }
 
             for (auto & i : rows_vec) {
@@ -83,7 +83,7 @@ int main() {
 
         else if (choice == "2") {
 
-            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only)";
+            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only): ";
             cin >> sort_choice;
 
             // input
@@ -126,7 +126,7 @@ int main() {
                 ufo.mergeSort(city_vec, 0, city_vec.size()-1, "city_count");
             }
             else if (sort_choice == "Q") {
-//                vector<UFO::Row> menu_1_output = ufo.quickSort(rows_vec, "city_count_descend");
+                ufo.quickSort(city_vec, 0, city_vec.size()-1, "city_count");
             }
 
             for (auto & i : city_vec) {
@@ -136,7 +136,7 @@ int main() {
 
         else if (choice == "3") {
 
-            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only)";
+            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only): ";
             cin >> sort_choice;
 
             // gets every single sighting in this vector
@@ -150,7 +150,7 @@ int main() {
                 ufo.mergeSort(city_vec, 0, city_vec.size()-1, "city_count");
             }
             else if (sort_choice == "Q") {
-//                vector<UFO::Row> menu_1_output = ufo.quickSort(city_vec, "city_count_descend");
+                ufo.quickSort(city_vec, 0, city_vec.size()-1, "city_count");
             }
 
             for (int i = 0; i < 50; i++) {
@@ -171,7 +171,7 @@ int main() {
                 ufo.mergeSort(UFO_all, 0 , UFO_all.size()-1, "duration");
             }
             else if (sort_choice == "Q") {
-//                vector<UFO::Row> menu_1_output = ufo.quickSort(UFO_all, "duration");
+                ufo.quickSort(UFO_all, 0, UFO_all.size()-1, "duration");
             }
 
             for (int i = 0; i < 50; i++) {

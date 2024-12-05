@@ -336,17 +336,17 @@ void UFO::mergeSort(vector<UFO::Row>& vec,int left, int right, const string& dat
 
 
 // quick sort - inspiration from Sorting notes
-vector<UFO::Row> UFO::quickSort(vector<UFO::Row> &vec, string datatype, int low, int high) {
+vector<UFO::Row> UFO::quickSort(vector<UFO::Row> &vec, int low, int high, string datatype) {
 
     if (low < high) {
-        int piv = partition(vec, datatype, low, high); // look at vec type!
-        quickSort(vec, datatype, low, piv - 1);
-        quickSort(vec, datatype, piv + 1, high);
+        int piv = partition(vec, low, high, datatype); // look at vec type!
+        quickSort(vec, low, piv - 1, datatype);
+        quickSort(vec, piv + 1, high, datatype);
     }
 }
 
 // partition func for quick sort - inspiration from Sorting notes
-int UFO::partition(vector<UFO::Row> &vec,string datatype, int low, int high) { // vec of UFO::Row?
+int UFO::partition(vector<UFO::Row> &vec, int low, int high, string datatype) { // vec of UFO::Row?
 
     auto piv = vec[low];
     int up = low;
