@@ -335,42 +335,85 @@ void UFO::mergeSort(vector<UFO::Row>& vec,int left, int right, const string& dat
 }
 
 
-// need to implement - taken from Sorting notes
-//vector<UFO::Row> UFO::quickSort(vector<UFO::Row> vec, string datatype, int low, int high) {
-//    if (low < high) {
-//        int piv = partition(vec, low, high); // look at vec type!
-//        quickSort(vec, low, piv - 1);
-//        quickSort(vec, piv + 1, high);
-//    }
-//
-//}
+// quick sort - inspiration from Sorting notes
+vector<UFO::Row> UFO::quickSort(vector<UFO::Row> &vec, string datatype, int low, int high) {
 
-// partition func for quick sort
-int UFO::partition(vector<int> &vec, int low, int high) { // vec of UFO::Row?
+    if (low < high) {
+        int piv = partition(vec, datatype, low, high); // look at vec type!
+        quickSort(vec, datatype, low, piv - 1);
+        quickSort(vec, datatype, piv + 1, high);
+    }
+}
 
-    int piv = vec[low];
+// partition func for quick sort - inspiration from Sorting notes
+int UFO::partition(vector<UFO::Row> &vec,string datatype, int low, int high) { // vec of UFO::Row?
+
+    auto piv = vec[low];
     int up = low;
     int down = high;
 
     while (up < down) {
 
-        // iterates up until it reaches value greater than piv
-        for (int j = up; j < high; j++) {
-            if (vec[up] > piv) {
-                break;
+        if (datatype == "distance") {
+            // iterates up until it reaches value greater than piv
+            for (int j = up; j < high; j++) {
+                if (vec[up].distance > piv.distance) {
+                    break;
+                }
+                up++;
             }
-            up++;
-        }
-        // iterates down until it reaches a val less than piv (starts at end of vec and works backwards)
-        for (int j = high; j > low; j--) {
-            if (vec[down] < piv) {
-                break;
+            // iterates down until it reaches a val less than piv (starts at end of vec and works backwards)
+            for (int j = high; j > low; j--) {
+                if (vec[down].distance < piv.distance) {
+                    break;
+                }
+                down--;
             }
-            down--;
+            // swap up and down if nec
+            if (up < down) {
+                swap(vec[up], vec[down]);
+            }
+
         }
-        // swap up and down if nec
-        if (up < down) {
-            swap(vec[up], vec[down]);
+        else if (datatype == "city_count") {
+            // iterates up until it reaches value greater than piv
+            for (int j = up; j < high; j++) {
+                if (vec[up].city_count > piv.city_count) {
+                    break;
+                }
+                up++;
+            }
+            // iterates down until it reaches a val less than piv (starts at end of vec and works backwards)
+            for (int j = high; j > low; j--) {
+                if (vec[down].city_count < piv.city_count) {
+                    break;
+                }
+                down--;
+            }
+            // swap up and down if nec
+            if (up < down) {
+                swap(vec[up], vec[down]);
+            }
+        }
+        else if (datatype == "duration") {
+            // iterates up until it reaches value greater than piv
+            for (int j = up; j < high; j++) {
+                if (vec[up].duration > piv.duration) {
+                    break;
+                }
+                up++;
+            }
+            // iterates down until it reaches a val less than piv (starts at end of vec and works backwards)
+            for (int j = high; j > low; j--) {
+                if (vec[down].duration < piv.duration) {
+                    break;
+                }
+                down--;
+            }
+            // swap up and down if nec
+            if (up < down) {
+                swap(vec[up], vec[down]);
+            }
         }
     }
     swap(vec[low], vec[down]);
