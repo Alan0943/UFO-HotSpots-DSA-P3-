@@ -7,12 +7,20 @@
 #include <vector>
 using namespace std;
 
-// used for grid_map
+// https://www.geeksforgeeks.org/how-to-create-an-unordered_map-of-pairs-in-c/
+// used for grid_map and a map in sortHelper2 (both have a pair for their key)
 struct PairHash {
-    size_t operator()(const pair<int, int>& p) const {
-        // hash func is adding the hashes of the two integers
-        // two integers will be floor of inputted latitude and longitude (floored to nearest multiple of 10 - and converted to int from double)
-        return hash<int>()(p.first) ^ (hash<int>()(p.second) << 1);
+    template <class T1, class T2>
+    size_t operator()(const pair<T1, T2>& p) const
+    {
+        // Hash the first element
+        size_t hash1 = hash<T1>{}(p.first);
+        // Hash the second element
+        size_t hash2 = hash<T2>{}(p.second);
+        // Combine the two hash values
+        return hash1
+               ^ (hash2 + 0x9e3779b9 + (hash1 << 6)
+                  + (hash1 >> 2));
     }
 };
 
@@ -73,9 +81,6 @@ struct UFO {
     void quickSort(vector<UFO::Row> &vec, int low, int high, string datatype);
 
     int partition(vector<UFO::Row> &vec, int up, int down, string datatype);
-
-    // temporary remove after implementing real sort
-    vector<UFO::Row> tempSort(vector<UFO::Row> vec, string datatype);
 
 };
 

@@ -8,6 +8,7 @@ using namespace std;
 //test
 int main() {
 
+    // declaration of UFO class
     UFO ufo;
 
     string choice;
@@ -276,7 +277,7 @@ int main() {
         }
 
         else if (choice == "6") {
-            cout << "end!" << endl;
+            cout << "End!" << endl;
             break;
         }
 
