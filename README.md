@@ -1,15 +1,15 @@
-# H1 COP3530 Project 3: UFO Sightings Data Analysis Program
-### H3 by Alan Skrypek, Caden Koster, Sean Ng
+# COP3530 Project 3: UFO Sightings Data Analysis Program
+### by Alan Skrypek, Caden Koster, Sean Ng
 
-## H2 Overview
-This program analyzes UFO sightings data and provides various functionalities such as viewing sightings within a radius, sorting sightings by different attributes, and inserting new sightings into the dataset. This program uses an unordered map (built in) for the datastructure, and compares merge and quick sort (built from scratch). Uses data set ufo_sightings.csv from [link](https://corgis-edu.github.io/corgis/csv/ufo_sightings/)
+## Overview
+This program analyzes UFO sightings data and provides various functionalities such as viewing sightings within a radius, sorting sightings by different attributes, and inserting new sightings into the dataset. This program uses an unordered map (built in) for the datastructure, and compares merge and quick sort (built from scratch). Uses data set ufo_sightings.csv from [link](https://corgis-edu.github.io/corgis/csv/ufo_sightings/).
 
-## H2 Instructions for Running Code
+## Instructions for Running Code
 1. Clone the repository or download the zip file.
 2. Open the program and make sure to not make a new configuration (config should say UFO_HotSpots_DSA_P3__test or something similar)
 3. Run the program (if "Error opening file" go to UFO_Data.cpp and put absolute path to ufo_sightings.csv)
 
-## H2 Menu Interface
+## Menu Interface
 Once the program is ran, a menu interface with a text box labled input will appear with these options:
 
 1. View all sightings within a radius (max 500 miles) (input coordinates)
@@ -21,7 +21,7 @@ Once the program is ran, a menu interface with a text box labled input will appe
 Select a option and if it says input, input the necessary data to the data input box
 After input, press the enter key and the output will display
 
-## H2 Features
+## Features
 1. View all sightings within a radius
    -Input a set of coordinates (latitude 20 - 50, longtiude -130 - -60) and a radius (max 500 miles)
    -Displays all UFO sightings within the specified radius, sorted by distance
