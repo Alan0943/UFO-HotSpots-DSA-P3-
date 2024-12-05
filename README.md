@@ -10,7 +10,7 @@ This program analyzes UFO sightings data and provides various functionalities su
 3. Run the program (if "Error opening file" go to UFO_Data.cpp and put absolute path to ufo_sightings.csv)
 
 ## Menu Interface
-Once the program is ran, a menu interface with a text box labled input will appear with these options:
+Once the program is ran, a menu interface will display shown below will display in the terminal
 
 1. View all sightings within a radius (max 500 miles) (input coordinates)
 2. View unique cities with most sightings within a radius (input coordinates)
@@ -18,8 +18,7 @@ Once the program is ran, a menu interface with a text box labled input will appe
 4. View top 50 sightings sorted by duration (descending order)
 5. Insert new sighting.
 
-Select a option and if it says input, input the necessary data to the data input box
-After input, press the enter key and the output will display
+Select a option and if it says input, input the necessary data to the terminal and output will be displayed
 
 ## Features
 1. View all sightings within a radius
