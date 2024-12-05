@@ -1,21 +1,36 @@
-UFO_Data.H
-There are three classes within UFO_Data.h. PairHash (used for the hash table) and UFO (stores all row's data and houses functions).
+# H1 COP3530 Project 3: UFO Sightings Data Analysis Program
+### H3 by Alan Skrypek, Caden Koster, Sean Ng
 
-UFO_Data.cpp
-There is the constructor, insert, distanceCalc, sortHelper, merge/quick sort, and tempSort. The constructor pulls all the data from the csv into the hash table,
-insert allows the addition of new data, distanceCalc calculates the distance between two points, sortHelper gets all the data from all adjacent grids that fit inside the radius,
-and merge/quick sort sorts data but is not implemented, and tempSort works but will be removed.
+## H2 Overview
+This program analyzes UFO sightings data and provides various functionalities such as viewing sightings within a radius, sorting sightings by different attributes, and inserting new sightings into the dataset. This program uses an unordered map (built in) for the datastructure, and compares merge and quick sort (built from scratch). Uses data set ufo_sightings.csv from [link](https://corgis-edu.github.io/corgis/csv/ufo_sightings/)
 
-main.cpp
-At the top there is an example of adding new data and printing out the total keys/key data and an example of calculating the distance between two points (with lat and long).
-The bottom houses the menu that currently has 6 choices, need to finish.
+## H2 Instructions for Running Code
+1. Clone the repository or download the zip file.
+2. Open the program and make sure to not make a new configuration (config should say UFO_HotSpots_DSA_P3__test or something similar)
+3. Run the program (if "Error opening file" go to UFO_Data.cpp and put absolute path to ufo_sightings.csv)
 
-Summary of Program
-Basically the UFO class is called, automatically calling the constructor which puts the data into the hash table, grid_map. The user is then asked to choose a menu option, the
-only one implemented as of right now is menu 1, which asks for coordinates and a radius. The coordinates/radius is error checked then the input is passed into sortHelper, which
-returns a vector of all sightings within that radius. This vector is then sorted and outputted to the user. Menu options 2-5 will be implemented in a similar fashion.
+## H2 Menu Interface
+Once the program is ran, a menu interface with a text box labled input will appear with these options:
 
-How to Access Program
-When Download/Clone Repo DO NOT make a new configuration file / add to new cmake project. The configuration should be UFO_HotSpots_DSA_P3__test and if that doesn't work make 
-make a new config file.
-   
+1. View all sightings within a radius (max 500 miles) (input coordinates)
+2. View unique cities with most sightings within a radius (input coordinates)
+3. View top 50 cities sorted by sightings (descending order)
+4. View top 50 sightings sorted by duration (descending order)
+5. Insert new sighting.
+
+Select a option and if it says input, input the necessary data to the data input box
+After input, press the enter key and the output will display
+
+## H2 Features
+1. View all sightings within a radius
+   -Input a set of coordinates (latitude 20 - 50, longtiude -130 - -60) and a radius (max 500 miles)
+   -Displays all UFO sightings within the specified radius, sorted by distance
+2.  View unique cities with most sightings within a radius
+   - Input a set of coordinates and a radius (max 500 miles)
+   - Displays a list of unique cities, sorted by the number of sightings attributed to each city, along with their distance from the input coordinates
+3. View top 50 cities sorted by sightings
+   - Displays the top 50 cities with the highest number of sightings in the dataset
+   - Sorted in descending order by the number of sightings
+4. View top 50 sightings sorted by duration
+   - Displays the top 50 cities with the highest duration in the dataset
+   - Sorted in descending order by the number of sightings
