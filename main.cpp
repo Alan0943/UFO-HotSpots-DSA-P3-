@@ -26,7 +26,7 @@ int main() {
 
         cout << "6. Exit\n";
 
-        cout << "Enter your choice:";
+        cout << "Enter your choice: ";
         cin >> choice;
         cout << endl;
 
@@ -130,7 +130,7 @@ int main() {
             }
 
             for (auto & i : city_vec) {
-                cout << i.city << " " << i.city_count << " " << i.distance << endl;
+                cout << i.city << " " << i.city_count << " " << i.distance << i.state << endl;
             }
         }
 
@@ -160,7 +160,7 @@ int main() {
 
         else if (choice == "4") {
 
-            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only)";
+            cout << "Merge Sort (M) or Quick Sort (Q)? (Enter M or Q only): ";
             cin >> sort_choice;
 
             // gets every single sighting in this vector

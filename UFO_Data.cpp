@@ -336,8 +336,7 @@ void UFO::mergeSort(vector<UFO::Row>& vec,int left, int right, const string& dat
 
 
 // quick sort - inspiration from Sorting notes
-vector<UFO::Row> UFO::quickSort(vector<UFO::Row> &vec, int low, int high, string datatype) {
-
+void UFO::quickSort(vector<UFO::Row> &vec, int low, int high, string datatype) {
     if (low < high) {
         int piv = partition(vec, low, high, datatype); // look at vec type!
         quickSort(vec, low, piv - 1, datatype);
@@ -378,14 +377,14 @@ int UFO::partition(vector<UFO::Row> &vec, int low, int high, string datatype) { 
         else if (datatype == "city_count") {
             // iterates up until it reaches value greater than piv
             for (int j = up; j < high; j++) {
-                if (vec[up].city_count > piv.city_count) {
+                if (vec[up].city_count < piv.city_count) {
                     break;
                 }
                 up++;
             }
             // iterates down until it reaches a val less than piv (starts at end of vec and works backwards)
             for (int j = high; j > low; j--) {
-                if (vec[down].city_count < piv.city_count) {
+                if (vec[down].city_count > piv.city_count) {
                     break;
                 }
                 down--;
@@ -398,14 +397,14 @@ int UFO::partition(vector<UFO::Row> &vec, int low, int high, string datatype) { 
         else if (datatype == "duration") {
             // iterates up until it reaches value greater than piv
             for (int j = up; j < high; j++) {
-                if (vec[up].duration > piv.duration) {
+                if (vec[up].duration < piv.duration) {
                     break;
                 }
                 up++;
             }
             // iterates down until it reaches a val less than piv (starts at end of vec and works backwards)
             for (int j = high; j > low; j--) {
-                if (vec[down].duration < piv.duration) {
+                if (vec[down].duration > piv.duration) {
                     break;
                 }
                 down--;
